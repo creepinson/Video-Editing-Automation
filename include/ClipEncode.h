@@ -19,7 +19,8 @@
  * @param  oc           OutputContext already allocated with codecs
  * @param  clip         Clip to encode
  * @param  pkt          output encoded packet
- * @return      >= 0 on success, < 0 when reach EOF, end of clip boundary or error.
+ * @return      >= 0 on success, < 0 when reach EOF, end of clip boundary or
+ * error.
  */
 int clip_encode_frame(OutputContext *oc, Clip *clip, AVPacket *pkt);
 
@@ -40,7 +41,8 @@ void example_clip_encode_frames(OutputContext *oc, Clip *clip);
  * @param  pkt  output encoded packet
  * @return      >= 0 on success
  */
-int clip_receive_enc_packet(OutputContext *oc, OutputStream *os, Clip *clip, AVPacket *pkt);
+int clip_receive_enc_packet(OutputContext *oc, OutputStream *os, Clip *clip,
+                            AVPacket *pkt);
 
 /**
  * Send a frame to encoder. This function builds ontop of clip_read_frame().
@@ -61,6 +63,7 @@ int clip_send_frame_to_encoder(OutputContext *oc, Clip *clip, AVPacket *pkt);
  * @param  pkt  output packet
  * @return      >= 0 on success
  */
-int handle_send_frame(OutputContext *oc, Clip *clip, enum AVMediaType type, int ret, AVPacket *pkt);
+int handle_send_frame(OutputContext *oc, Clip *clip, enum AVMediaType type,
+                      int ret, AVPacket *pkt);
 
 #endif

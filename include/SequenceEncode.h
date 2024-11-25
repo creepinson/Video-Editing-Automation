@@ -10,8 +10,8 @@
 #ifndef _SEQUENCE_ENCODE_
 #define _SEQUENCE_ENCODE_
 
-#include "SequenceDecode.h"
 #include "OutputContextStructs.h"
+#include "SequenceDecode.h"
 
 /**
  * Read encodec packets from a sequence
@@ -19,7 +19,8 @@
  * @param  oc           OutputContext already allocated with codecs
  * @param  seq_ts       Sequence containing clips to encode
  * @param  pkt          output encoded packet
- * @return      >= 0 on success, < 0 when reach EOF, end of clip boundary or error.
+ * @return      >= 0 on success, < 0 when reach EOF, end of clip boundary or
+ * error.
  */
 int sequence_encode_frame(OutputContext *oc, Sequence *seq, AVPacket *pkt);
 
@@ -28,7 +29,7 @@ int sequence_encode_frame(OutputContext *oc, Sequence *seq, AVPacket *pkt);
  * Test example showing how to encode frames from sequence
  * @param seq Sequence to encode
  */
- void example_sequence_encode_frames(OutputContext *oc, Sequence *seq);
+void example_sequence_encode_frames(OutputContext *oc, Sequence *seq);
 
 /*************** INTERNAL FUNCTIONS ***************/
 /**
@@ -39,7 +40,8 @@ int sequence_encode_frame(OutputContext *oc, Sequence *seq, AVPacket *pkt);
  * @param  pkt  output encoded packet
  * @return      >= 0 on success
  */
-int seq_receive_enc_packet(OutputContext *oc, OutputStream *os, Sequence *seq, AVPacket *pkt);
+int seq_receive_enc_packet(OutputContext *oc, OutputStream *os, Sequence *seq,
+                           AVPacket *pkt);
 
 /**
  * Send a frame to encoder. This function builds ontop of seq_read_frame().
@@ -60,6 +62,7 @@ int seq_send_frame_to_encoder(OutputContext *oc, Sequence *seq, AVPacket *pkt);
  * @param  pkt  output packet
  * @return      >= 0 on success
  */
-int seq_handle_send_frame(OutputContext *oc, Sequence *seq, enum AVMediaType type, int ret, AVPacket *pkt);
+int seq_handle_send_frame(OutputContext *oc, Sequence *seq,
+                          enum AVMediaType type, int ret, AVPacket *pkt);
 
 #endif

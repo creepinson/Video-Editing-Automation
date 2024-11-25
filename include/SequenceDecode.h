@@ -10,8 +10,8 @@
 #ifndef _SEQUENCE_DECODE_
 #define _SEQUENCE_DECODE_
 
-#include "Sequence.h"
 #include "ClipDecode.h"
+#include "Sequence.h"
 
 /**
  * Read decoded frames from our editing sequence
@@ -22,7 +22,8 @@
  * @return                  >= 0 on success (returned a frame)
  *                          < 0 when reached end of sequence or error
  */
-int sequence_read_frame(Sequence *seq, AVFrame *frame, enum AVMediaType *frame_type, bool close_clips_flag);
+int sequence_read_frame(Sequence *seq, AVFrame *frame,
+                        enum AVMediaType *frame_type, bool close_clips_flag);
 
 /**
  * Clear fields on AVFrame from decoding
@@ -35,6 +36,6 @@ void clear_frame_decoding_garbage(AVFrame *f);
  * Test example showing how to read frames from sequence
  * @param seq Sequence to read
  */
- int example_sequence_read_frames(Sequence *seq, bool close_clips_flag);
+int example_sequence_read_frames(Sequence *seq, bool close_clips_flag);
 
 #endif

@@ -1,11 +1,11 @@
 #ifndef _RANDOM_SPLICE_
 #define _RANDOM_SPLICE_
 
-#include <stdio.h>
 #include <dirent.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <stdlib.h>
 
 #include "OutputContext.h"
 
@@ -13,40 +13,40 @@
 
 typedef struct RandSpliceParams {
 
-    /*************** SEQUENCE PARAMS ***************/
-    /*
-        output filename
-     */
-    char output_file[1024];
-    /*
-        frames per second to use in sequence
-     */
-    double fps;
-    /*
-        audio sample rate
-     */
-    int sample_rate;
+  /*************** SEQUENCE PARAMS ***************/
+  /*
+      output filename
+   */
+  char output_file[1024];
+  /*
+      frames per second to use in sequence
+   */
+  double fps;
+  /*
+      audio sample rate
+   */
+  int sample_rate;
 
-    /*************** ALGORITHM PARAMS ***************/
-    /*
-        directory to fetch video files
-     */
-    char source_dir[1024];
-    /*
-        duration of output video (in frames)
-     */
-    int64_t duration;
-    /*
-        average length of cuts (in frames)
-     */
-    int cut_len_avg;
-    /*
-        variability of average cuts
-     */
-    int cut_len_var;
+  /*************** ALGORITHM PARAMS ***************/
+  /*
+      directory to fetch video files
+   */
+  char source_dir[1024];
+  /*
+      duration of output video (in frames)
+   */
+  int64_t duration;
+  /*
+      average length of cuts (in frames)
+   */
+  int cut_len_avg;
+  /*
+      variability of average cuts
+   */
+  int cut_len_var;
 
-    /*************** INTERNAL ONLY ***************/
-    int pick_frames_recur;
+  /*************** INTERNAL ONLY ***************/
+  int pick_frames_recur;
 } RandSpliceParams;
 
 /**
@@ -60,7 +60,8 @@ typedef struct RandSpliceParams {
 int random_edit(Sequence *os, Sequence *ns, RandSpliceParams *par);
 
 /**
- * Make a random cut from original sequence and place that clip into new sequence
+ * Make a random cut from original sequence and place that clip into new
+ * sequence
  * @param  os  original sequence (input)
  * @param  ns  new sequence (output)
  * @param  par parameters from user to control algorithm
@@ -69,14 +70,16 @@ int random_edit(Sequence *os, Sequence *ns, RandSpliceParams *par);
 int random_cut(Sequence *os, Sequence *ns, RandSpliceParams *par);
 
 /**
- * Cut a clip out of original sequence and insert it into new sequence in sorted order
+ * Cut a clip out of original sequence and insert it into new sequence in sorted
+ * order
  * @param  os          Original sequence
  * @param  ns          New Sequence
  * @param  start_index start frame of cut in original sequence
  * @param  end_index   end frame of cut in original sequence
  * @return             >= 0 on success
  */
-int cut_remove_insert(Sequence *os, Sequence *ns, int start_index, int end_index);
+int cut_remove_insert(Sequence *os, Sequence *ns, int start_index,
+                      int end_index);
 
 /**
  * Randomly pick start and end frames given user parameters
@@ -86,7 +89,8 @@ int cut_remove_insert(Sequence *os, Sequence *ns, int start_index, int end_index
  * @param  end_index   output index of end frame for cut
  * @return             >= 0 on success
  */
-int pick_frames(Sequence *seq, RandSpliceParams *par, int *start_index, int *end_index);
+int pick_frames(Sequence *seq, RandSpliceParams *par, int *start_index,
+                int *end_index);
 
 /**
  * Generate random number between range in the uniform distribution

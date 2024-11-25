@@ -17,9 +17,11 @@
  * Will automatically skip by packets if they are before clip->seek_pts
  * This occurs because we need an I-frame before non I-frame packets to decode.
  * @param  clip         Clip to read
- * @param  frame        output of decoded packet between clip bounds (precise seeking!)
+ * @param  frame        output of decoded packet between clip bounds (precise
+ * seeking!)
  * @param  frame_type   type of frame (AVMEDIA_TYPE_VIDEO/AVMEDIA_TYPE_AUDIO)
- * @return       >= 0 on success, < 0 when reached EOF, end of clip boundary or error.
+ * @return       >= 0 on success, < 0 when reached EOF, end of clip boundary or
+ * error.
  */
 int clip_read_frame(Clip *clip, AVFrame *frame, enum AVMediaType *frame_type);
 
@@ -47,7 +49,8 @@ bool frame_before_seek(Clip *clip, AVFrame *frame, enum AVMediaType type);
  * @param  ret   return value from calling avcodec_receive_frame()
  * @return       >= 0 on success
  */
-int handle_receive_frame(Clip *clip, AVFrame *frame, int ret, enum AVMediaType *type);
+int handle_receive_frame(Clip *clip, AVFrame *frame, int ret,
+                         enum AVMediaType *type);
 
 /**
  * Sends a single clip packet and get the decoded frame
@@ -55,7 +58,8 @@ int handle_receive_frame(Clip *clip, AVFrame *frame, int ret, enum AVMediaType *
  * @param  frame decoded frame output
  * @return       >= 0 on success
  */
-int clip_send_packet_get_frame(Clip *clip, AVFrame *frame, enum AVMediaType *type);
+int clip_send_packet_get_frame(Clip *clip, AVFrame *frame,
+                               enum AVMediaType *type);
 
 /**
  * Send clip packet to decoder
