@@ -11,10 +11,10 @@
 #ifndef _VIDEOCONTEXT_API_
 #define _VIDEOCONTEXT_API_
 
+#include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libavutil/pixdesc.h>
 #include <stdbool.h>
-#include <stdio.h>
 #include <sys/stat.h>
 
 enum PacketStreamType {
@@ -34,7 +34,7 @@ typedef struct VideoContext {
       Encoding is handled by OutputContext, since the entire sequence
       needs to be encoded with the same codec and codec parameters
    */
-  AVCodec *video_codec, *audio_codec;
+  const AVCodec *video_codec, *audio_codec;
   /*
       CodecContexts used for demuxing
    */

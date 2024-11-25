@@ -8,6 +8,7 @@
  */
 
 #include "Clip.h"
+#include <time.h>
 
 /**
  * Allocate a new clip pointing to the same VideoContext as Clip param.

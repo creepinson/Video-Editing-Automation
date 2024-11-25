@@ -173,15 +173,16 @@ int open_video_output(OutputContext *oc, OutputParameters *op, Sequence *seq) {
   }
   // video codec id override from user defined params
 
-  if (op->video.codec_id != AV_CODEC_ID_NONE) {
-    printf("OVERRIDE VIDEO CODEC\n");
-    oc->fmt_ctx->oformat->video_codec = op->video.codec_id;
-  }
-  // audio codec id override from user defined params
-  if (op->audio.codec_id != AV_CODEC_ID_NONE) {
-    printf("OVERRIDE AUDIO CODEC\n");
-    oc->fmt_ctx->oformat->audio_codec = op->audio.codec_id;
-  }
+  // FIXME: update codec overriding to latest ffmpeg
+  // if (op->video.codec_id != AV_CODEC_ID_NONE) {
+  //   printf("OVERRIDE VIDEO CODEC\n");
+  //   oc->fmt_ctx->oformat = avcodec_find_decoder(op->video.codec_id);
+  // }
+  // // audio codec id override from user defined params
+  // if (op->audio.codec_id != AV_CODEC_ID_NONE) {
+  //   printf("OVERRIDE AUDIO CODEC\n");
+  //   oc->fmt_ctx->oformat->audio_codec = op->audio.codec_id;
+  // }
   vid_codec_id = oc->fmt_ctx->oformat->video_codec;
   aud_codec_id = oc->fmt_ctx->oformat->audio_codec;
   if (vid_codec_id != AV_CODEC_ID_NONE) {

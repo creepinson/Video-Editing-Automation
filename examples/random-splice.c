@@ -1,4 +1,5 @@
 #include "RandomSplice.h"
+#include <time.h>
 
 /**
  * valgrind --leak-check=yes bin/examples/random-splice

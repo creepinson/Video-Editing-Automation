@@ -1,2 +1,4 @@
-bin
 test-resources
+/build/
+.cache/
+.DS_Store
